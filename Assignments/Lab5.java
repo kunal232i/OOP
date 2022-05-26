@@ -1,3 +1,4 @@
+package Assignments;
 import java.util.*;
 
 class Order{
@@ -40,7 +41,7 @@ public class Lab5 {
            System.out.print("Do you want COD - ");
            Boolean wantCod = SC.nextBoolean();
 
-           orders.add(new order(items, wantCod));
+           orders.addAll((Collection<? extends order>) new Order(items, wantCod));
            for (order order : orders) {
                order.print();
            }

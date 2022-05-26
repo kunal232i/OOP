@@ -1,3 +1,5 @@
+package Assignments;
+
 import java.util.*;
 
 public class Lab4 {
