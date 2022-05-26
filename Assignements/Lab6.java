@@ -1,3 +1,4 @@
+package Assignements;
 import java.sql.*;
 import java.util.Scanner;
 
