@@ -12,7 +12,7 @@ public class Lab6 {
             student s = new student();
             do
             {
-                System.out.println("Select an operation \n 1- Registration \n 2- Update Roll No \n 3- Delete a Record \n 4- Search for a Student \n 5- Exit \n Enter your choice :");
+                System.out.println("Select an operation \n 1- Registration \n 2- Roll No Update \n 3- Delete a Record \n 4- Search for a Student \n 5- Exit \n Enter your choice :");
                 Scanner choicein = new Scanner(System.in);
                 choice=choicein.nextInt();
                 switch(choice)
@@ -83,9 +83,9 @@ class student
         System.out.println("Enter Your Name");
         Scanner input = new Scanner(System.in);
         String inputname=input.nextLine();
-        System.out.println("Enter the new Roll NO");
+        System.out.println("Enter the new Roll No");
         String inputpass=input.nextLine();
-        String sql = "update student set Roll NO = ? where name = ?;";
+        String sql = "update student set rollno = ? where name = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, inputpass);
         stmt.setString(2, inputname);
