@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Lab6 {
             student s = new student();
             do
             {
-                System.out.println("Select an operation \n 1- Registration \n 2- Password Update \n 3- Delete a Record \n 4- Search for a Student \n 5- Exit \n Enter your choice :");
+                System.out.println("Select an operation \n 1- Registration \n 2- Update Roll No \n 3- Delete a Record \n 4- Search for a Student \n 5- Exit \n Enter your choice :");
                 Scanner choicein = new Scanner(System.in);
                 choice=choicein.nextInt();
                 switch(choice)
@@ -53,7 +54,7 @@ class student
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your Name :");
         name = input.nextLine();
-        System.out.println("Enter your password : ");
+        System.out.println("Enter your Roll No : ");
         password = input.nextLine();
         System.out.println("Enter your Country : ");
         country = input.nextLine();
@@ -82,9 +83,9 @@ class student
         System.out.println("Enter Your Name");
         Scanner input = new Scanner(System.in);
         String inputname=input.nextLine();
-        System.out.println("Enter the new Password");
+        System.out.println("Enter the new Roll NO");
         String inputpass=input.nextLine();
-        String sql = "update student set password = ? where name = ?;";
+        String sql = "update student set Roll NO = ? where name = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, inputpass);
         stmt.setString(2, inputname);
@@ -137,7 +138,7 @@ class student
         }
         else
         {
-            System.out.println("\n Name : " + rs.getString(1)+"\t Password : "+rs.getString(2)+"\t Country : "+rs.getString(3)+"\t Marks : " + rs.getInt(4));
+            System.out.println("\n Name : " + rs.getString(1)+"\t Roll NO : "+rs.getString(2)+"\t Country : "+rs.getString(3)+"\t Marks : " + rs.getInt(4));
 
         }
         dbmsconnect.closeConnection(con, stmt);
