@@ -12,7 +12,7 @@ public class Lab6 {
             student s = new student();
             do
             {
-                System.out.println("Select an operation \n 1- Registration \n 2- Roll No Update \n 3- Delete a Record \n 4- Search for a Student \n 5- Exit \n Enter your choice :");
+                System.out.println("Select an operation \n 1- Insert Name \n 2- Roll No Update \n 3- Delete a Record \n 4- Search for a Name \n 5- Exit \n Enter your choice :");
                 Scanner choicein = new Scanner(System.in);
                 choice=choicein.nextInt();
                 switch(choice)
@@ -22,7 +22,7 @@ public class Lab6 {
                         s.insertStudent();
                         break;
                     case 2:
-                        s.updateStudentPassword();
+                        s.updateStudentrollno();
                         break;
                     case 3:
                         s.deleteStudentRecord();
@@ -46,7 +46,7 @@ public class Lab6 {
 class student
 {
     private String name;
-    private String password;
+    private String rollno;
     private String country;
     private int mark;
 
@@ -55,7 +55,7 @@ class student
         System.out.println("Enter your Name :");
         name = input.nextLine();
         System.out.println("Enter your Roll No : ");
-        password = input.nextLine();
+        rollno = input.nextLine();
         System.out.println("Enter your Country : ");
         country = input.nextLine();
         System.out.println("Enter the marks :");
@@ -64,12 +64,12 @@ class student
 
     public void insertStudent() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
-        dbmsconnection dbmsconnect = new dbmsconnection("jdbc:mysql://localhost:3306/student","root","rootpassword");
+        dbmsconnection dbmsconnect = new dbmsconnection("jdbc:mysql://localhost:3306/student","root","rootrollno");
         Connection con = dbmsconnect.getConnection();
         String sql = "insert into student values (?,?,?,?);";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, name);
-        stmt.setString(2, password);
+        stmt.setString(2, rollno);
         stmt.setString(3, country);
         stmt.setInt(4, mark);
         int i = stmt.executeUpdate();
@@ -77,8 +77,8 @@ class student
         dbmsconnect.closeConnection(con, stmt);
     }
 
-    public void updateStudentPassword() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-        dbmsconnection dbmsconnect = new dbmsconnection("jdbc:mysql://localhost:3306/student","root","rootpassword");
+    public void updateStudentrollno() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+        dbmsconnection dbmsconnect = new dbmsconnection("jdbc:mysql://localhost:3306/student","root","rootrollno");
         Connection con = dbmsconnect.getConnection();
         System.out.println("Enter Your Name");
         Scanner input = new Scanner(System.in);
@@ -149,19 +149,19 @@ class dbmsconnection
 {
     String url;
     String username;
-    String password;
+    String rollno;
 
-    public dbmsconnection(String url, String username, String password) {
+    public dbmsconnection(String url, String username, String rollno) {
         this.url = url;
         this.username = username;
-        this.password = password;
+        this.rollno = rollno;
     }
 
     @SuppressWarnings("deprecation")
     public Connection getConnection() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
         Connection con=null;
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        con = DriverManager.getConnection(url,username,password);
+        con = DriverManager.getConnection(url,username,rollno);
         System.out.println("Connection Established Successfully");
         return con;
     }
