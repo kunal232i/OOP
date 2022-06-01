@@ -12,7 +12,7 @@ public class Lab6 {
             student s = new student();
             do
             {
-                System.out.println("Select an operation \n 1- Insert Name \n 2- Roll No Update \n 3- Delete a Record \n 4- Search for a Name \n 5- Exit \n Enter your choice :");
+                System.out.println("Select an operation \n(1)- Insert Name \n(2)- Roll No Update \n(3)- Delete a Record \n(4)- Search for a Name \n(5)- Exit \nEnter your choice :");
                 Scanner choicein = new Scanner(System.in);
                 choice=choicein.nextInt();
                 switch(choice)
